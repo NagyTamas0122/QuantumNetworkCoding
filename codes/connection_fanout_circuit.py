@@ -1,4 +1,6 @@
-import connection_fanout
+from codes.connection_fanout import fanout
+from qiskit import QuantumCircuit, QuantumRegister
+import numpy as np
 
 # Connection:Fanout circuit function
 def connection_fanout_circuit() -> QuantumCircuit:

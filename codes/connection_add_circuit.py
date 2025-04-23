@@ -1,4 +1,6 @@
-import connection_add
+from codes.connection_add import add
+from qiskit import QuantumCircuit, QuantumRegister
+import numpy as np
 
 # Connection:Add circuit function
 def connection_add_circuit() -> QuantumCircuit:

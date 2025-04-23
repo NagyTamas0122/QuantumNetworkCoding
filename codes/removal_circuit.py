@@ -1,4 +1,5 @@
-import removal
+from codes.removal import rem
+from qiskit import QuantumCircuit, QuantumRegister
 
 # Removal circuit function
 def removal_circuit() -> QuantumCircuit:

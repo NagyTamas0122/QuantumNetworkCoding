@@ -1,4 +1,9 @@
-import connection, connection_add, connection_fanout, removal, removal_add
+from codes.connection import con
+from codes.connection_add import add
+from codes.connection_fanout import fanout
+from codes.removal import rem
+from codes.removal_add import remadd
+from qiskit import QuantumCircuit, QuantumRegister
 
 # Encoding circuit function
 def encoding() -> QuantumCircuit:
