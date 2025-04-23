@@ -1,0 +1,4 @@
+qiskit
+qiskit-ibm-runtime
+qiskit[visualization]
+qiskit_aer
