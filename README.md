@@ -12,7 +12,7 @@ Installation guide: https://docs.quantum.ibm.com/guides/install-qiskit
 
 Example step-by-step installation guide:
   - Clone the repository
-    - For example: git clone {link to the repository}
+    - For example: `git clone <link to the repository>`
   - Set up virtual environment
     - For example:
       - `python3 -m venv .venv`
