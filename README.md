@@ -1,12 +1,10 @@
-# QuantumCommunication
+# Quantum Network Coding
 
 This is the repository for the simulation of Quantum Network Coding in Python Qiskit.
 
-This is for my independent laboratory theme: Satellite-based Quantum Communication (Implementing Quantum Network Coding in Quantum Repeater Network?).
+QNC - like its classical counterpart (Linear Network Coding) - gives answer to a network's scaling problem. It is modelled in a Quantum Repeater Network environment. You can use this instead of entanglement swapping in a butterfly network-like telecommunication system.
 
-QNC is modelled in a Quantum Repeater Network environment.
-
-All modells are based on scientific papers (for example: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.032331).
+All modells are based on scientific paper: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.032331
 
 Installation guide: https://docs.quantum.ibm.com/guides/install-qiskit
 
