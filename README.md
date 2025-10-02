@@ -15,6 +15,7 @@ Example step-by-step installation guide:
     - For example:
       - `python3 -m venv .venv`
       - On Windows: `.venv\Scripts\activate` || On Linux: `source .venv/bin/activate`
+      - Deactivate the environment (optional): `deactivate`
   - Install libraries using the requirements.txt file in the docs folder
     - For example: `pip install -r docs/requirements.txt`
   - Execute the main.py

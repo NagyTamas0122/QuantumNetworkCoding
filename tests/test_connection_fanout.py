@@ -22,10 +22,10 @@ def test_connection_fanout() -> None:
 
     # Plotting initial statevector
     sv_init.draw("city")
-    plt.suptitle("Before applying the connection:fanout circuit", fontsize=16)
+    plt.suptitle("Before applying the Connection:Fanout circuit", fontsize=16)
     plt.show()
 
     # Plotting final statevector
     sv_fin.draw("city")
-    plt.suptitle("After applying the connection:fanout circuit", fontsize=16)
+    plt.suptitle("After applying the Connection:Fanout circuit", fontsize=16)
     plt.show()

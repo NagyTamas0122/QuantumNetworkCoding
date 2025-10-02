@@ -22,10 +22,10 @@ def test_connection_add() -> None:
 
     # Plotting initial statevector
     sv_init.draw("city")
-    plt.suptitle("Before applying the connection:add circuit", fontsize=16)
+    plt.suptitle("Before applying the Connection:Add circuit", fontsize=16)
     plt.show()
 
     # Plotting final statevector
     sv_fin.draw("city")
-    plt.suptitle("After applying the connection:add circuit", fontsize=16)
+    plt.suptitle("After applying the Connection:Add circuit", fontsize=16)
     plt.show()

@@ -12,7 +12,7 @@ def test_encoding() -> None:
 
     # Plotting circuit
     qc.draw("mpl", initial_state=True, fold=-1)
-    plt.title("Encoding without additional registers", fontsize=16)
+    plt.title("Encoding circuit without additional registers", fontsize=16)
     plt.show()
 
     # Creating AER simulation locally
@@ -29,12 +29,12 @@ def test_encoding() -> None:
 
     # Plotting final density matrix (all qubits traced out except A, F)
     dm_fin_af.draw("city")
-    plt.suptitle("After applying the encoding circuit this happens to A and F qubits (proof by checking density matrix)", fontsize=16)
+    plt.suptitle("After applying the Encoding circuit this happens to A and F qubits (proof by checking density matrix)", fontsize=16)
     plt.show()
 
     # Plotting final density matrix (all qubits traced out except B, E)
     dm_fin_be.draw("city")
-    plt.suptitle("After applying the encoding circuit this happens to B and E qubits (proof by checking density matrix)", fontsize=16)
+    plt.suptitle("After applying the Encoding circuit this happens to B and E qubits (proof by checking density matrix)", fontsize=16)
     plt.show()
 
     # Building circuit for 2 qubit EPR pair Bell measurement (checking A, F qubits)
@@ -42,7 +42,7 @@ def test_encoding() -> None:
 
     # Plotting final result to A and F qubits (using Bell measurement)
     plot_histogram(probabilities_af)
-    plt.title("After applying the encoding circuit this happens to A and F qubits (proof by doing Bell measurement)", fontsize=16)
+    plt.title("After applying the Encoding circuit this happens to A and F qubits (proof by doing Bell measurement)", fontsize=16)
     plt.show()
     print(f"Most likely Bell state for entangled A, F qubits: {state_af}")
 
@@ -51,7 +51,7 @@ def test_encoding() -> None:
 
     # Plotting final result to B and E qubits (using Bell measurement)
     plot_histogram(probabilities_be)
-    plt.title("After applying the encoding circuit this happens to B and E qubits (proof by doing Bell measurement)", fontsize=16)
+    plt.title("After applying the Encoding circuit this happens to B and E qubits (proof by doing Bell measurement)", fontsize=16)
     plt.show()
     print(f"Most likely Bell state for entangled B, E qubits: {state_be}")
 

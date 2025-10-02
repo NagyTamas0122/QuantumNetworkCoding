@@ -22,10 +22,10 @@ def test_removal_add() -> None:
 
     # Plotting initial statevector
     sv_init.draw("city")
-    plt.suptitle("Before applying the removal:add circuit", fontsize=16)
+    plt.suptitle("Before applying the Removal:Add circuit", fontsize=16)
     plt.show()
 
     # Plotting final statevector
     sv_fin.draw("city")
-    plt.suptitle("After applying the removal:add circuit", fontsize=16)
+    plt.suptitle("After applying the Removal:Add circuit", fontsize=16)
     plt.show()
