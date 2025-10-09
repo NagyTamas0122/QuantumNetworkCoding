@@ -6,7 +6,7 @@ from codes.removal_add import remadd
 from qiskit import QuantumCircuit, QuantumRegister
 
 # Encoding circuit function
-def encoding() -> QuantumCircuit:
+def encoding_2_2() -> QuantumCircuit:
 
     # Initialize quantum circuit
     qc = QuantumCircuit(QuantumRegister(1, name='A'), #0
@@ -17,12 +17,14 @@ def encoding() -> QuantumCircuit:
                         QuantumRegister(1, name='F'), #5
                         QuantumRegister(1, name='G'), #6
                         QuantumRegister(1, name='H'), #7
-                        QuantumRegister(1, name='I'), #8
-                        QuantumRegister(1, name='J'), #9
-                        QuantumRegister(1, name='K'), #10
-                        QuantumRegister(1, name='L'), #11
-                        QuantumRegister(1, name='M'), #12
-                        QuantumRegister(1, name='N')) #13
+                        QuantumRegister(1, name='I1'), #8
+                        QuantumRegister(1, name='J1'), #9
+                        QuantumRegister(1, name='I2'), #10
+                        QuantumRegister(1, name='J2'), #11
+                        QuantumRegister(1, name='K'), #12
+                        QuantumRegister(1, name='L'), #13
+                        QuantumRegister(1, name='M'), #14
+                        QuantumRegister(1, name='N')) #15
     
     # Adding gates to the circuit
 
@@ -34,6 +36,7 @@ def encoding() -> QuantumCircuit:
     qc.h(8)
     qc.h(10)
     qc.h(12)
+    qc.h(14)
     qc.cx(0,1)
     qc.cx(2,3)
     qc.cx(4,5)
@@ -41,6 +44,7 @@ def encoding() -> QuantumCircuit:
     qc.cx(8,9)
     qc.cx(10,11)
     qc.cx(12,13)
+    qc.cx(14,15)
     #qc.save_statevector(label="input")
     qc.barrier(label="input")
 
@@ -51,35 +55,41 @@ def encoding() -> QuantumCircuit:
     qc.barrier(label="step 1")
 
     # Step 2
-    qc.append(add(), [3,7,8,9])
+    qc.append(con(), [9,10,11])
+    qc.append(rem(), [9,8])
     #qc.save_statevector(label="step 2")
     qc.barrier(label="step 2")
 
     # Step 3
-    qc.append(fanout(), [9,10,11,12,13])
+    qc.append(add(), [3,7,8,11])
     #qc.save_statevector(label="step 3")
     qc.barrier(label="step 3")
 
     # Step 4
-    qc.cx(11,1)
-    qc.cx(13,5)
+    qc.append(fanout(), [11,12,13,14,15])
     #qc.save_statevector(label="step 4")
     qc.barrier(label="step 4")
 
     # Step 5
-    qc.append(rem(), [11,9])
-    qc.append(rem(), [13,9])
+    qc.cx(13,1)
+    qc.cx(15,5)
     #qc.save_statevector(label="step 5")
     qc.barrier(label="step 5")
 
     # Step 6
-    qc.append(remadd(), [3,7,9])
+    qc.append(rem(), [13,11])
+    qc.append(rem(), [15,11])
     #qc.save_statevector(label="step 6")
     qc.barrier(label="step 6")
 
     # Step 7
+    qc.append(remadd(), [3,7,11])
+    #qc.save_statevector(label="step 7")
+    qc.barrier(label="step 7")
+
+    # Step 8
     qc.append(rem(), [3,0])
     qc.append(rem(), [7,4])
-    qc.save_statevector(label="step 7")
+    qc.save_statevector(label="step 8")
 
     return qc

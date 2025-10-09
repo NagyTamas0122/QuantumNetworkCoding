@@ -6,23 +6,23 @@ from codes.removal_add import remadd
 from qiskit import QuantumCircuit, QuantumRegister
 
 # Encoding circuit function
-def encoding() -> QuantumCircuit:
+def encoding_2_4() -> QuantumCircuit:
 
     # Initialize quantum circuit
-    qc = QuantumCircuit(QuantumRegister(1, name='A'), #0
-                        QuantumRegister(1, name='B'), #1
-                        QuantumRegister(1, name='C'), #2
-                        QuantumRegister(1, name='D'), #3
-                        QuantumRegister(1, name='E'), #4
-                        QuantumRegister(1, name='F'), #5
-                        QuantumRegister(1, name='G'), #6
-                        QuantumRegister(1, name='H'), #7
-                        QuantumRegister(1, name='I'), #8
-                        QuantumRegister(1, name='J'), #9
-                        QuantumRegister(1, name='K'), #10
-                        QuantumRegister(1, name='L'), #11
-                        QuantumRegister(1, name='M'), #12
-                        QuantumRegister(1, name='N')) #13
+    qc = QuantumCircuit(QuantumRegister(1, name='A'),
+                        QuantumRegister(1, name='B'),
+                        QuantumRegister(1, name='C'),
+                        QuantumRegister(1, name='D'),
+                        QuantumRegister(1, name='E'),
+                        QuantumRegister(1, name='F'),
+                        QuantumRegister(1, name='G'),
+                        QuantumRegister(1, name='H'),
+                        QuantumRegister(1, name='I'),
+                        QuantumRegister(1, name='J'),
+                        QuantumRegister(1, name='K'),
+                        QuantumRegister(1, name='L'),
+                        QuantumRegister(1, name='M'),
+                        QuantumRegister(1, name='N'))
     
     # Adding gates to the circuit
 

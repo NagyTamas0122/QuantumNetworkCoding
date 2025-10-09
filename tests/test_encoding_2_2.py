@@ -1,32 +1,32 @@
-from codes.encoding import encoding
+from codes.encoding_2_2 import encoding_2_2
 from codes.helper import trace_out, bell_measurement, trace_debugger, list_qubit_registers
 from matplotlib import pyplot as plt
 from qiskit import transpile
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
 
-def test_encoding() -> None:
+def test_encoding_2_2() -> None:
     
     # Encoding circuit
-    qc = encoding()
-    #list_qubit_registers(qc)
+    qc = encoding_2_2()
+    list_qubit_registers(qc)
 
     # Plotting circuit
     qc.draw("mpl", initial_state=True, fold=-1)
-    plt.title("Encoding circuit without additional registers", fontsize=16)
+    plt.title("Encoding (N=2, M=2) circuit without additional registers", fontsize=16)
     plt.show()
 
     # Creating AER simulation locally
     aer_sim = AerSimulator(method='statevector')
     tqc = transpile(qc, aer_sim)
     result = aer_sim.run(tqc, shots=1000).result()
-    sv_7 = result.data()["step 7"]
+    sv_8 = result.data()["step 8"]
 
     # Trace out qubits except A and F
-    dm_fin_af = trace_out(14, sv_7, [0,5])
+    dm_fin_af = trace_out(16, sv_8, [0,5])
 
     # Trace out qubits except B and E
-    dm_fin_be = trace_out(14, sv_7, [1,4])
+    dm_fin_be = trace_out(16, sv_8, [1,4])
 
     # Plotting final density matrix (all qubits traced out except A, F)
     dm_fin_af.draw("city")
@@ -57,7 +57,7 @@ def test_encoding() -> None:
     plt.show()
     print(f"Most likely Bell state for entangled B, E qubits: {state_be}\n")
     print(f"Purity of the Bell state of entangled B, E qubits: {purity_be:.4f}\n")
-
+    
     # Debugging entanglement on the whole circuit
-    #trace_debugger(sv_7, [0,5], 14)
-    #trace_debugger(sv_7, [1,4], 14)
+    #trace_debugger(sv_8, [0,5], 16)
+    #trace_debugger(sv_8, [1,4], 16)

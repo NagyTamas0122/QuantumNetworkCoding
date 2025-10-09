@@ -4,16 +4,16 @@ from typing import Tuple, List, Dict
 import numpy as np
 
 # Trace out some qubits from a statevector while keeping others
-def trace_out(sv: Statevector, keep_qubit_list: List[int]) -> DensityMatrix:
+def trace_out(total_qubits: int, sv: Statevector, keep_qubit_list: List[int]) -> DensityMatrix:
     
-    total_qubits = list(range(14))
-    trace_out = [q for q in total_qubits if q not in keep_qubit_list]
+    all_qubits = list(range(total_qubits))
+    trace_out = [q for q in all_qubits if q not in keep_qubit_list]
     dm = partial_trace(sv, trace_out)
     
     return dm
 
 # Creating Quantum circuit for 2 qubit EPR pair Bell measurement
-def bell_measurement(dm: DensityMatrix) -> Tuple[Dict, str]:
+def bell_measurement(dm: DensityMatrix) -> Tuple[Dict, str, str]:
     
     qc_bell = QuantumCircuit(2)
     qc_bell.cx(0,1)
@@ -23,14 +23,16 @@ def bell_measurement(dm: DensityMatrix) -> Tuple[Dict, str]:
     probabilities = dm_bell.probabilities_dict()
     likely_result = max(probabilities, key=probabilities.get)
     bell_map = {
-        '00': r'|Ψ⁺⟩ = (|00⟩ + |11⟩) / √2',
-        '01': r'|Φ⁺⟩ = (|01⟩ + |10⟩) / √2',
-        '10': r'|Ψ⁻⟩ = (|00⟩ - |11⟩) / √2',
-        '11': r'|Φ⁻⟩ = (|01⟩ - |10⟩) / √2',
+        '00': r'|Φ⁺⟩ = (|00⟩ + |11⟩) / √2',
+        '01': r'|Ψ⁺⟩ = (|01⟩ + |10⟩) / √2',
+        '10': r'|Φ⁻⟩ = (|00⟩ - |11⟩) / √2',
+        '11': r'|Ψ⁻⟩ = (|01⟩ - |10⟩) / √2',
     }
     bell_state = bell_map.get(likely_result, 'Unknown')
     
-    return probabilities, bell_state
+    purity = np.real(np.trace(dm.data @ dm.data))
+    
+    return probabilities, bell_state, purity
 
 # Helper function to debug entanglement on a whole circuit
 def trace_debugger(global_state: Statevector | DensityMatrix, target_qubits: List[int], total_qubits: int) -> None:
@@ -61,3 +63,9 @@ def trace_debugger(global_state: Statevector | DensityMatrix, target_qubits: Lis
 
     if not entangled_with:
         print("No individual qubit is entangled with the pair.")
+
+# List all of the quantum registers of a circuit
+def list_qubit_registers(qc: QuantumCircuit):
+    for i, q in enumerate(qc.qubits):
+        print(f"{i}: {q}")
+    print("\n")
